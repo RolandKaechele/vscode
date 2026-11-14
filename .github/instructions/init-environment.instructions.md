@@ -29,3 +29,23 @@ mismatch error.
 Yarn is pinned as a devDependency; install the matching global CLI with
 `npm run install-yarn` (runs `npm install --global yarn@1`) before using
 `yarn`-based scripts.
+
+Windows signing tools (`signtool.exe`) live under the Windows SDK bin folder,
+which isn't on `PATH` by default. In every PowerShell terminal, run this
+before any build step that needs it:
+
+```powershell
+$env:Path = 'C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64;' + $env:Path
+Get-Command signtool.exe
+```
+
+## Packaging a Windows build
+
+To produce a win32 x64 desktop package, run these in order (requires `signtool.exe`
+on `PATH` and the matching `yarn` CLI installed — see above):
+
+```powershell
+npm run gulp vscode-win32-x64
+yarn gulp vscode-win32-x64-inno-updater
+yarn gulp vscode-win32-x64-system-setup
+```

@@ -34,3 +34,6 @@ CLI/agent extension and its build/CI integration). When merging an upstream
 - After resolving conflicts, run `npm run compile-check-ts-native` to confirm
   no dangling references remain (deleted/renamed exports, missing enum
   members, etc.) from the upstream refactor.
+- Also run `npm run compile` once, since the merge can touch `build/gulpfile*.ts`
+  and `build/lib/**` directly — `compile-check-ts-native` only type-checks
+  `src/`, it won't catch build-script breakage from the exclusion cleanup.
