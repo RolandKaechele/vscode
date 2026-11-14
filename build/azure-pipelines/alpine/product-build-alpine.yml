@@ -5,13 +5,14 @@ parameters:
 jobs:
   - job: Alpine_${{ parameters.VSCODE_ARCH }}
     displayName: Alpine (${{ upper(parameters.VSCODE_ARCH) }})
-    timeoutInMinutes: 30
+    timeoutInMinutes: 60
     pool:
       name: 1es-ubuntu-22.04-x64
       os: linux
     variables:
       NPM_ARCH: ${{ parameters.VSCODE_ARCH }}
       VSCODE_ARCH: ${{ parameters.VSCODE_ARCH }}
+      BUILDS_API_URL: $(System.CollectionUri)$(System.TeamProject)/_apis/build/builds/$(Build.BuildId)/
     templateContext:
       outputParentDirectory: $(Build.ArtifactStagingDirectory)/out
       outputs:

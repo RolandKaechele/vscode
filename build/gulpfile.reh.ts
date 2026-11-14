@@ -465,7 +465,8 @@ function patchWin32DependenciesTask(destinationFolderName: string) {
 
 function copyCopilotNativeDepsTaskREH(platform: string, arch: string, destinationFolderName: string) {
 	return async () => {
-		const nodeModulesDir = path.join(BUILD_ROOT, destinationFolderName, 'node_modules');
+		const outputDir = path.join(BUILD_ROOT, destinationFolderName);
+		const nodeModulesDir = path.join(outputDir, 'node_modules');
 		copyCopilotNativeDeps(platform, arch, nodeModulesDir);
 	};
 }

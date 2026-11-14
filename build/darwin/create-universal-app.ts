@@ -12,7 +12,7 @@ const root = path.dirname(path.dirname(import.meta.dirname));
 
 const nodeModulesBases = [
 	path.join('Contents', 'Resources', 'app', 'node_modules'),
-	path.join('Contents', 'Resources', 'app', 'node_modules.asar.unpacked'),
+	path.join('Contents', 'Resources', 'app', 'node_modules.asar.unpacked')
 ];
 
 /**
