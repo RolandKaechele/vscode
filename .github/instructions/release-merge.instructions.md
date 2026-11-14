@@ -4,6 +4,12 @@ description: Read this when merging an upstream release branch (e.g. release/1.x
 
 # Merging upstream release branches
 
+Before merging, ensure the working tree is clean: run `git status --short`
+and remove any untracked/scratch files (e.g. temp diff dumps, stray `.ts`/`.css`
+copies used for 3-way comparisons) with `git clean -fd` (review the dry run
+`git clean -ndd` first) so they don't get accidentally staged into the merge
+commit.
+
 This fork excludes the `extensions/copilot` directory (the built-in Copilot
 CLI/agent extension and its build/CI integration). When merging an upstream
 `release/x.y` branch into this fork:
