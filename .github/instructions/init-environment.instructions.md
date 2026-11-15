@@ -50,6 +50,13 @@ yarn gulp vscode-win32-x64-inno-updater
 yarn gulp vscode-win32-x64-system-setup
 ```
 
+`vscode-win32-x64` produces an unminified, bundled build (`out-vscode` →
+`VSCodeWin32X64`) — faster to build and easier to debug (readable code,
+real stack traces). Use `vscode-win32-x64-min` instead for a minified/mangled
+build (`out-vscode-min`) matching what's actually shipped to users; it's
+smaller but harder to debug. Same substitution applies to the other
+platform/arch targets (e.g. `vscode-darwin-arm64`, `vscode-linux-x64`).
+
 ## `npm run compile` completion is unreliable to detect automatically
 
 `npm run compile` (the full gulp `compile` task, as opposed to the watch
