@@ -31,9 +31,14 @@ CLI/agent extension and its build/CI integration). When merging an upstream
   `@github/copilot`/`@github/copilot-sdk` npm package used by
   `src/vs/platform/agentHost/**`, or the `src/vs/sessions/contrib/copilotChatSessions/**`
   feature area — these are separate from the excluded extension.
-- After resolving conflicts, run `npm run compile-check-ts-native` to confirm
-  no dangling references remain (deleted/renamed exports, missing enum
-  members, etc.) from the upstream refactor.
+- After resolving conflicts, run `npm install` first (the merge usually bumps
+  `package.json`/`package-lock.json` — new/updated dependencies like
+  `@types/*` packages won't be on disk yet, causing spurious
+  `compile-check-ts-native`/`npm run compile` type errors that look like
+  code issues but are just a stale `node_modules`), then run
+  `npm run compile-check-ts-native` to confirm no dangling references remain
+  (deleted/renamed exports, missing enum members, etc.) from the upstream
+  refactor.
 - Also run `npm run compile` once, since the merge can touch `build/gulpfile*.ts`
   and `build/lib/**` directly — `compile-check-ts-native` only type-checks
   `src/`, it won't catch build-script breakage from the exclusion cleanup.
