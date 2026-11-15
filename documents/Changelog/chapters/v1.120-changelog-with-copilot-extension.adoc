@@ -1,0 +1,157 @@
+= VS Code 1.120 Changelog (Full Upstream - includes GitHub Copilot extension)
+:toc:
+:toclevels: 1
+:sectnums:
+
+Bug fixes and enhancements merged from upstream `release/1.120` into
+`release/1.119`, covering the complete upstream change set, split into the
+core/workbench changes (also applied to this fork) and the changes scoped to
+the `extensions/copilot` built-in extension (NOT applied to this fork - see
+link:v1.120-changelog-without-copilot-extension.adoc[the fork changelog] for
+what actually landed here). Each entry links to the originating pull request
+on https://github.com/microsoft/vscode[microsoft/vscode] where one could be
+identified from the commit message.
+
+== Core and Workbench Changes
+
+include::v1.120-changelog-without-copilot-extension.adoc[tag=core-entries]
+
+== GitHub Copilot Extension Changes (`extensions/copilot`, not applied to this fork)
+
+* [cherry-pick] Disable chat input notifications for PRU users (link:https://github.com/microsoft/vscode/pull/315932[#315932])
+* [cherry-pick] fix: background todo agent prompt correctness and noise reduction
+* [cherry-pick] Gate replayed thinking blocks on same-model match for all rounds (link:https://github.com/microsoft/vscode/pull/316676[#316676])
+* [cherry-pick] nes(xtab): detect duplicate additions in diff-patch + adversarial-review fixes (link:https://github.com/microsoft/vscode/pull/315944[#315944])
+* [cherry-pick] NES: flip default for reverse agreement (link:https://github.com/microsoft/vscode/pull/314331[#314331])
+* [cherry-pick] NES: opt-in global-budget cascade for prompt parts (link:https://github.com/microsoft/vscode/pull/315943[#315943])
+* [release/1.120] Cherry-pick 56d74126ee0: Add GPT-5.5 prompt experiment flags (link:https://github.com/microsoft/vscode/pull/315906[#315906])
+* Add coverage for Copilot CLI node-pty shimming (link:https://github.com/microsoft/vscode/pull/314648[#314648])
+* Add experimental alt prompt for Claude Opus 4.7 (link:https://github.com/microsoft/vscode/pull/313916[#313916])
+* Add GPT- 5.5 tool experiment gates (link:https://github.com/microsoft/vscode/pull/315028[#315028])
+* Add 'nes' RequestKind for Next Edit Suggestion (xtab)
+* Add per turn info for CLIs as well (link:https://github.com/microsoft/vscode/pull/315152[#315152])
+* Add requestKind to response telemetry events
+* Add 'summarization' requestKind for conversation-history compaction
+* Add support for per-turn ubb info (link:https://github.com/microsoft/vscode/pull/314783[#314783])
+* add tests
+* adding request.options.tools event to 3p
+* agent test: warm tokenizer in beforeAll to fix summarization test flake (link:https://github.com/microsoft/vscode/pull/314610[#314610])
+* agent: floor context-size estimate with server-reported prompt_tokens (link:https://github.com/microsoft/vscode/pull/315444[#315444])
+* Agents - improve state management for session operation (link:https://github.com/microsoft/vscode/pull/315492[#315492])
+* Agents - reorder the actions in the Changes view (link:https://github.com/microsoft/vscode/pull/314379[#314379])
+* agents: add sessionTypes to agent URIs for local sessions (link:https://github.com/microsoft/vscode/pull/314650[#314650])
+* Align requestKind/X-Interaction-Type with server taxonomy
+* Allow running the local harness in the agents window (missing testing contribution there)
+* Always send reasoning for same responses model (link:https://github.com/microsoft/vscode/pull/314998[#314998])
+* Anthropic Messages API: own cache_control placement; drop heuristic breakpoints (link:https://github.com/microsoft/vscode/pull/315406[#315406])
+* be defensive about failed model list refreshes (link:https://github.com/microsoft/vscode/pull/315402[#315402])
+* broaden definition of effectively empty, but only when re-selecting the same ws (link:https://github.com/microsoft/vscode/pull/315308[#315308])
+* Bump @anthropic-ai/sdk from 0.82.0 to 0.91.1 in /extensions/copilot/chat-lib (link:https://github.com/microsoft/vscode/pull/313636[#313636])
+* Bump router decision timeout from 1s to 2.5s
+* Bump version to 0.48.1 in package.json
+* BYOK: Add provideId static property to all providers
+* BYOK: Avoid auth token retrieval for diagnostics purposes only
+* BYOK: support per-model reasoning_effort across OpenAI-compatible providers (link:https://github.com/microsoft/vscode/pull/315181[#315181])
+* chore: register backgroundTodoAgent.enabled in package.json
+* Classify vscode.ChatSummarizer as Background, not MainAgent
+* Clear details on sign out (link:https://github.com/microsoft/vscode/pull/315170[#315170])
+* Combine background todo agent enablement gate
+* consider a git init on an empty folder to still be empty (link:https://github.com/microsoft/vscode/pull/314249[#314249])
+* Copilot - scaffold method to eagerly refresh changes cache (link:https://github.com/microsoft/vscode/pull/315468[#315468])
+* copilot: condense background todo prompt
+* copilot: updateSources (link:https://github.com/microsoft/vscode/pull/315005[#315005])
+* Default to background; mark mainagent; emit conversationId+parentRequestId on response.cancelled/error
+* diagnostic logs around enablement (link:https://github.com/microsoft/vscode/pull/314138[#314138])
+* Disable Copilot Memory and remove github.copilot.chat.copilotMemory.enabled setting (link:https://github.com/microsoft/vscode/pull/315794[#315794])
+* Disable forking CLI sessions in release (link:https://github.com/microsoft/vscode/pull/315608[#315608])
+* Drop conversationId/parentRequestId additions on response.success/cancelled/error
+* Drop Summarization and Nes RequestKinds; rely on ChatLocation
+* Fall back to first known endpoint instead of throwing when no available_models match
+* feat(chat): rebalance bg todo system prompt for full-task plans
+* feat(chat): tighten bg todo policy and surface subagent context
+* feat: add background todo processor, delta tracker, and prompt
+* feat: add BackgroundTodoAgentEnabled experiment config key
+* feat: add final review pass and tool-call improvements for background todos
+* feat: add Get Changed Files tool configuration and enablement in Copilot Chat
+* feat: add tiered invocation policy and history compression to background todo processor
+* feat: hide todo prompt instructions when background agent is enabled
+* feat: wait for pending background tasks after SDK send in CopilotCLISession (link:https://github.com/microsoft/vscode/pull/314954[#314954])
+* feat: wire background todo agent into AgentIntent lifecycle
+* Fix /compact omitting assistant messages (link:https://github.com/microsoft/vscode/pull/314260[#314260])
+* Fix /remote when session controller is disabled (link:https://github.com/microsoft/vscode/pull/315142[#315142])
+* Fix code search for case where we can't get a local diff
+* Fix empty chat response when first message exceeds budget (link:https://github.com/microsoft/vscode/pull/315503[#315503])
+* Fix locale separator in Copilot title prompt (link:https://github.com/microsoft/vscode/pull/315487[#315487])
+* Fix multiple billing entity message (#316079) (link:https://github.com/microsoft/vscode/pull/316102[#316102])
+* fix PR comments
+* fix PR nits
+* Fix tool_search bookkeeping when resuming from stateful marker (link:https://github.com/microsoft/vscode/pull/314217[#314217])
+* Fix two requestKind misclassifications
+* fix(chat): only run background todo agent on explicit Run decision
+* fix(copilot): harden background todo processing
+* fix(copilot): simplify background todo prompt gating
+* fix: disable auto model feature in CLI configuration (link:https://github.com/microsoft/vscode/pull/314936[#314936])
+* fix: disable session controller for CLI by default (link:https://github.com/microsoft/vscode/pull/315084[#315084])
+* fix: ensure background todo processor completes before final review
+* fix: gate all todo prompt instructions behind hideTodoPromptInstructions
+* fix: include sidekick YAML definitions in .vscodeignore (link:https://github.com/microsoft/vscode/pull/315132[#315132])
+* fix: prevent enabling CoreManageTodoList when todo tool is explicitly referenced
+* fix: serialize sessionResource Uri and fix processor reliability
+* fix: split assistant context into prunable messages and refine prompt
+* Fixed tokenizer bug for customOAI models (link:https://github.com/microsoft/vscode/pull/315370[#315370])
+* handle cancellation
+* Harden Copilot Electron test temp-dir cleanup on Windows (link:https://github.com/microsoft/vscode/pull/314901[#314901])
+* Honor BYOK editTools configuration in chat model picker (link:https://github.com/microsoft/vscode/pull/314914[#314914])
+* Hot-swap effort level on Claude session via applyFlagSettings (link:https://github.com/microsoft/vscode/pull/314295[#314295])
+* improve history
+* improve history
+* Improve linked symbol anchors with tree-sitter fallback (link:https://github.com/microsoft/vscode/pull/314864[#314864])
+* improve titles
+* Keep historical user messages cache-safe (link:https://github.com/microsoft/vscode/pull/315194[#315194])
+* Make Chronicle a Skill (link:https://github.com/microsoft/vscode/pull/313929[#313929])
+* Minor cleanup for cli credits (link:https://github.com/microsoft/vscode/pull/315164[#315164])
+* move desc to package.nls.json
+* Move test file to correct layer to fix build break
+* multiplex in case it's too long
+* NES cursor jump: respect first model with tag CursorJump from /models (link:https://github.com/microsoft/vscode/pull/313988[#313988])
+* nes: remove TopToBottom clipping strategy from RecentFileClippingStrategy (link:https://github.com/microsoft/vscode/pull/314689[#314689])
+* Potential fix for pull request finding
+* PR feedback
+* Refactor Copilot CLI agent resolution with enhanced caching (link:https://github.com/microsoft/vscode/pull/315175[#315175])
+* refactor(backgroundTodo): replace start/executePass/executeFinalReview with drain-queue architecture
+* refactor(backgroundTodo): update callers to use new queue API
+* refactor: add invocation policy and execution to BackgroundTodoProcessor
+* refactor: add peek/commit semantics and metadata to BackgroundTodoDeltaTracker
+* refactor: condense background todo prompt system messages
+* refactor: simplify _maybeStartBackgroundTodoPass to use processor policy
+* remove md
+* Remove redundant View Usage actions (link:https://github.com/microsoft/vscode/pull/315551[#315551])
+* Remove search view results tool in favor of skill (link:https://github.com/microsoft/vscode/pull/314725[#314725])
+* Remove the view usage button and update wording (link:https://github.com/microsoft/vscode/pull/315141[#315141])
+* Remove unnecessary logging statements from Copilot CLI session and related handlers (link:https://github.com/microsoft/vscode/pull/314021[#314021])
+* rename agent type so it doesn't get redacted
+* Replace RequestKind enum with explicit interactionTypeOverride
+* Replace requestKind literal strings with RequestKind constant
+* run finalize on cancel as well
+* sanitize user-controllable text to prevent tag forgery in prompt rendering
+* Send copilot_plan to auto-intent-service for per-SKU routing
+* Set parentRequestId on subagent telemetry from parent ChatRequest.id
+* Show usage stats in context window for BYOK (link:https://github.com/microsoft/vscode/pull/315394[#315394])
+* Stop truncating bg todo history; let prompt-tsx prune by priority
+* Strip leading `<think>` blocks from cursor jump model output (link:https://github.com/microsoft/vscode/pull/314993[#314993])
+* support for agent instructions in extensions IPromptsService (link:https://github.com/microsoft/vscode/pull/314227[#314227])
+* test(backgroundTodo): update tests for drain-queue architecture
+* test: add history compression tests for background todo processor
+* test: add tests for background todo agent
+* test: add tests for final review, coalescing, and tool extraction
+* Throw when Anthropic web search allowed and blocked domains are both set (link:https://github.com/microsoft/vscode/pull/314275[#314275])
+* Tighten background todo prompt rules
+* Undo unncessary change
+* Update routerTimeout test to match new 2.5s timeout
+* Updates to prompts, (link:https://github.com/microsoft/vscode/pull/314921[#314921])
+* Use 4 cache_control breakpoints for Anthropic Messages API (link:https://github.com/microsoft/vscode/pull/315505[#315505])
+* Use DI-aware PromptRenderer in sendInvokedToolTelemetry (link:https://github.com/microsoft/vscode/pull/314023[#314023])
+* Use rawCopilotPlan to preserve exact plan values for per-SKU routing
+* Use VS Code chat parent turn id for parentRequestId across response.success/cancelled/error
+* Wording update for CB/CE users usage warnings (link:https://github.com/microsoft/vscode/pull/315390[#315390])
+* Yemohyle/response success gdpr blocks (link:https://github.com/microsoft/vscode/pull/315128[#315128])

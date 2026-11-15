@@ -11,6 +11,12 @@ release branches. Each release provides two variants:
 * *full upstream* — the complete upstream change set, including the
   `extensions/copilot`-scoped changes that were intentionally left out.
 
+== 1.120
+
+include::chapters/v1.120-changelog-without-copilot-extension.adoc[leveloffset=+2]
+
+include::chapters/v1.120-changelog-with-copilot-extension.adoc[leveloffset=+2]
+
 == 1.119
 
 include::chapters/v1.119-changelog-without-copilot-extension.adoc[leveloffset=+2]

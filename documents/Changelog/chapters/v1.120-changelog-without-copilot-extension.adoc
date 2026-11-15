@@ -1,0 +1,489 @@
+= VS Code 1.120 Changelog (Core / Fork - excludes GitHub Copilot extension)
+:toc:
+:toclevels: 1
+:sectnums:
+
+Bug fixes and enhancements merged from upstream `release/1.120` into
+`release/1.119`, excluding everything under `extensions/copilot` (the
+built-in GitHub Copilot CLI/agent extension, which this fork does not ship).
+Each entry links to the originating pull request on
+https://github.com/microsoft/vscode[microsoft/vscode] where one could be
+identified from the commit message.
+
+== Core and Workbench Changes
+
+// tag::core-entries[]
+* :lipstick:
+* [cherry-pick] [cherry-pick] Changes to remove '.' from allowRead and allowWrite (link:https://github.com/microsoft/vscode/pull/314300[#314300])
+* [cherry-pick] Add retries to snap build (link:https://github.com/microsoft/vscode/pull/314307[#314307])
+* [cherry-pick] Add sandbox unsandboxed auto-approval setting (#315410) (link:https://github.com/microsoft/vscode/pull/315848[#315848])
+* [cherry-pick] Cache terminal risk assessment by command only
+* [cherry-pick] chat: disable agents window actions when agent mode is disabled (link:https://github.com/microsoft/vscode/pull/315859[#315859])
+* [cherry-pick] Clarify sandbox allowNetwork domain settings (link:https://github.com/microsoft/vscode/pull/314284[#314284])
+* [cherry-pick] Fix BYOK model picker grouping
+* [cherry-pick] Fix titlebar colors (link:https://github.com/microsoft/vscode/pull/315752[#315752])
+* [cherry-pick] github-auth: revert sessions-specific auth branding (link:https://github.com/microsoft/vscode/pull/315805[#315805])
+* [cherry-pick] Move agents window extension list to product.json (link:https://github.com/microsoft/vscode/pull/315970[#315970])
+* [cherry-pick] OSS tool 1.119 (link:https://github.com/microsoft/vscode/pull/314294[#314294])
+* [cherry-pick] sessions: default pre-cutoff sessions to read to avoid unread badge flood on upgrade (link:https://github.com/microsoft/vscode/pull/315809[#315809])
+* [cherry-pick] sessions: navigate between chats in back/forward history (link:https://github.com/microsoft/vscode/pull/315632[#315632])
+* [cherry-pick] sessions: persist layout state per session and across reloads (link:https://github.com/microsoft/vscode/pull/315716[#315716])
+* [cherry-pick] Ship stable symbol tool descriptions (link:https://github.com/microsoft/vscode/pull/315818[#315818])
+* [cherry-pick] telemetry: send common.isAgentsWindow instead of overriding product name (link:https://github.com/microsoft/vscode/pull/315757[#315757])
+* Add AHP transport JSONL logging (link:https://github.com/microsoft/vscode/pull/315129[#315129])
+* Add AIC to agent debug panel (link:https://github.com/microsoft/vscode/pull/315133[#315133])
+* Add architecture documentation and working notes for esbuild-based build system (link:https://github.com/microsoft/vscode/pull/314390[#314390])
+* add back gutter to allow collapsing
+* add back string
+* Add basic support for custom diff editors
+* Add borders for agents new session button and chat input in light theme (link:https://github.com/microsoft/vscode/pull/314960[#314960])
+* add ChatSkill.disableModelInvocation (link:https://github.com/microsoft/vscode/pull/314174[#314174])
+* Add Cmd+Shift+A keybinding to switch between VS Code and Agents window (link:https://github.com/microsoft/vscode/pull/314553[#314553])
+* Add Code OSS logs skill (link:https://github.com/microsoft/vscode/pull/314313[#314313])
+* Add command to dump settings schema (link:https://github.com/microsoft/vscode/pull/315219[#315219])
+* Add container name to New/Browse button aria-labels on AI customization welcome page (link:https://github.com/microsoft/vscode/pull/314232[#314232])
+* Add Ctrl+R keybinding for sessions picker in agents window (link:https://github.com/microsoft/vscode/pull/315259[#315259])
+* Add document diff api proposal
+* Add es5-ext to .moduleignore to exclude quarantined module
+* Add File to Chat" does nothing when right-clicking a non-active editor tab (link:https://github.com/microsoft/vscode/pull/315197[#315197])
+* Add inner highlighting support in md diff preview
+* Add integrated browser URL configuration to session tasks service and run script action
+* add logs for unexpected InstancePolicy.prompt in sessions window
+* Add proposal for custom editor diff/merge priority
+* Add right click visibility toggle for sign in button
+* add selected foreground and icon foreground colors for editor suggest widget
+* Add snippet support for CURRENT_MILLISECOND, CURRENT_MILLISECONDS_UNIX, and CURRENT_TIMEZONE_NAME (link:https://github.com/microsoft/vscode/pull/315140[#315140])
+* Add static commands for opening Agent Host chat sessions (link:https://github.com/microsoft/vscode/pull/314187[#314187])
+* Add SVG theme preview for light mode in 2026 (link:https://github.com/microsoft/vscode/pull/315015[#315015])
+* add testplan item template
+* add tests
+* Add unit tests
+* Add unread/in-progress indicators to chat composite bar tabs (link:https://github.com/microsoft/vscode/pull/315115[#315115])
+* add yaml.parseMarkdownFrontMatter for lightweight parsing of front matter (link:https://github.com/microsoft/vscode/pull/314386[#314386])
+* Add/reword ubb chat input messages (link:https://github.com/microsoft/vscode/pull/314639[#314639])
+* Adding beaker icon for when chat customization extension is not installed (link:https://github.com/microsoft/vscode/pull/313219[#313219])
+* Additional styling fixes for UBB (link:https://github.com/microsoft/vscode/pull/314237[#314237])
+* Address code review comments
+* Address code review comments
+* address PR comment
+* Address review feedback
+* Address review feedback
+* Address review feedback
+* Addresses https://github.com/microsoft/vscode-internalbacklog/issues/6699. Adds fields to chatEditHunk and code accepted event. Also adds new code rejected event.
+* Adds fixture for https://github.com/microsoft/vscode/issues/309796
+* Adds missing getVendors mock
+* Adjust padding for tabbed action list tab bar (link:https://github.com/microsoft/vscode/pull/314738[#314738])
+* adopt latest changes and plumb through meta
+* Agent customizations: screen reader accessibility fixes (link:https://github.com/microsoft/vscode/pull/314770[#314770])
+* Agent host: fix realsdk integration tests (link:https://github.com/microsoft/vscode/pull/314915[#314915])
+* agent host: negotiate protocol version + surface incompatibility in UI (link:https://github.com/microsoft/vscode/pull/314262[#314262])
+* Agent host: prefer origin/<default> as worktree base (link:https://github.com/microsoft/vscode/pull/314861[#314861])
+* Agent Host: Show Open Pull Request button + live PR/CI state (link:https://github.com/microsoft/vscode/pull/314860[#314860])
+* agentHost/claude: Phase 5 + Phase 6 — IAgent provider, sendMessage (re-land) (link:https://github.com/microsoft/vscode/pull/314533[#314533])
+* agentHost/claude: Phase 6 — sendMessage, single-turn, no tools (link:https://github.com/microsoft/vscode/pull/314216[#314216])
+* agentHost/claude: Phase 6.1 — auth, model config, mapper, lifecycle, doc alignment (link:https://github.com/microsoft/vscode/pull/315136[#315136])
+* AgentHost: Add agent host model metadata multipliers (link:https://github.com/microsoft/vscode/pull/314026[#314026])
+* agentHost: dedupe no-op root state actions (link:https://github.com/microsoft/vscode/pull/314597[#314597])
+* agentHost: enable @ file completions in new and existing sessions
+* agentHost: initial scaffolding out for completions
+* agentHost: periodic code cleanup pass (link:https://github.com/microsoft/vscode/pull/315580[#315580])
+* agent-host: restore selected model in picker (link:https://github.com/microsoft/vscode/pull/314613[#314613])
+* agentHost: revert undefined-field omission, update tests instead
+* agentHost: rewrite Resource attachments and omit undefined fields
+* AgentHost: Skills don't show plugin prefix (link:https://github.com/microsoft/vscode/pull/315241[#315241])
+* agentHost: support image and blob user-message attachments
+* agentHost: use URI helpers for subagent sessions (link:https://github.com/microsoft/vscode/pull/313924[#313924])
+* Agents - add "Sync Changes" action to the new session screen in the Files view (link:https://github.com/microsoft/vscode/pull/315346[#315346])
+* Agents - add back the missing contribution (link:https://github.com/microsoft/vscode/pull/314471[#314471])
+* Agents - add branch name into the titlebar (link:https://github.com/microsoft/vscode/pull/314325[#314325])
+* Agents - add test coverage for sessionFileChangesEqual (link:https://github.com/microsoft/vscode/pull/315040[#315040])
+* Agents - add worktree icon to session list (link:https://github.com/microsoft/vscode/pull/314213[#314213])
+* Agents - better handle archived sessions (link:https://github.com/microsoft/vscode/pull/314670[#314670])
+* Agents - cleanup Changes view menus/actions (link:https://github.com/microsoft/vscode/pull/315014[#315014])
+* Agents - do not pass the session metadata to commands (link:https://github.com/microsoft/vscode/pull/315214[#315214])
+* Agents - do not show "Mark as Done" while a git operation is in progress (link:https://github.com/microsoft/vscode/pull/315466[#315466])
+* Agents - expand discard changes to all changesets (link:https://github.com/microsoft/vscode/pull/315523[#315523])
+* Agents - extract repository state from metadata (link:https://github.com/microsoft/vscode/pull/315488[#315488])
+* Agents - fix edge cases for primary action in the Changes view (link:https://github.com/microsoft/vscode/pull/315389[#315389])
+* Agents - fix regression related to showing the "Create Pull Request" action (link:https://github.com/microsoft/vscode/pull/315378[#315378])
+* Agents - fix rendering of the Changes panel for untitled sessions (link:https://github.com/microsoft/vscode/pull/314702[#314702])
+* Agents - improve the changes observable so that it does not fire too often (link:https://github.com/microsoft/vscode/pull/315031[#315031])
+* Agents - lock post commit command settings (link:https://github.com/microsoft/vscode/pull/315440[#315440])
+* Agents - refactor pull request actions (link:https://github.com/microsoft/vscode/pull/315266[#315266])
+* Agents - scaffold Changesets model (link:https://github.com/microsoft/vscode/pull/313577[#313577])
+* Agents - set the title/aria label for the button when the custom label changes (link:https://github.com/microsoft/vscode/pull/315210[#315210])
+* Agents - show label of the running action + progress icon (link:https://github.com/microsoft/vscode/pull/315200[#315200])
+* Agents - show outgoing changes while action is running (link:https://github.com/microsoft/vscode/pull/315274[#315274])
+* Agents - use the progress indicator while git operation is running (link:https://github.com/microsoft/vscode/pull/314999[#314999])
+* agents app: add "Don't show again" checkbox to permission warning dialogs (link:https://github.com/microsoft/vscode/pull/313498[#313498])
+* agents mobile: redesign changes/diff overlays with master-detail navigation and syntax highlighting (link:https://github.com/microsoft/vscode/pull/314433[#314433])
+* Agents web: auto-detect OS color scheme by default (link:https://github.com/microsoft/vscode/pull/314878[#314878])
+* Agents web: no hosts screen (link:https://github.com/microsoft/vscode/pull/315113[#315113])
+* Agents web: remove theme service for now (link:https://github.com/microsoft/vscode/pull/314638[#314638])
+* Agents welcome: introduce isEmbeddedApp and parentAppName environment properties (link:https://github.com/microsoft/vscode/pull/314061[#314061])
+* Agents: Adjust dropdown button styles in AI Customization Management (link:https://github.com/microsoft/vscode/pull/314380[#314380])
+* agents: fix spinner stuck after session completes (link:https://github.com/microsoft/vscode/pull/314608[#314608])
+* Agents: Improve tab behavior in narrow viewports for better accessibility (link:https://github.com/microsoft/vscode/pull/314373[#314373])
+* Agents: Update line-height for agent feedback widget title (link:https://github.com/microsoft/vscode/pull/314378[#314378])
+* Allow agent host copilot cli to use selection text and range (link:https://github.com/microsoft/vscode/pull/314245[#314245])
+* Allow agents window to be restored on restart (link:https://github.com/microsoft/vscode/pull/314580[#314580])
+* Allow more extensions to be enabled in the sessions window
+* Always enable model filter for new design (link:https://github.com/microsoft/vscode/pull/315097[#315097])
+* Announce "Bridged" badge in MCP Servers list (link:https://github.com/microsoft/vscode/pull/314255[#314255])
+* Announce AI customization list result count to screen readers (link:https://github.com/microsoft/vscode/pull/314254[#314254])
+* Announce section counts in AI Customization sidebar for screen readers (link:https://github.com/microsoft/vscode/pull/314253[#314253])
+* Approval telemetry (link:https://github.com/microsoft/vscode/pull/315215[#315215])
+* Avoid infinite loop in syncing agent host config (link:https://github.com/microsoft/vscode/pull/314391[#314391])
+* Avoid redundant chat agent lock rerenders (link:https://github.com/microsoft/vscode/pull/314883[#314883])
+* Better craft Copilot CLI identity in VS Code (link:https://github.com/microsoft/vscode/pull/315086[#315086])
+* better handling of mounting/unmounting of aquarium (link:https://github.com/microsoft/vscode/pull/314659[#314659])
+* better new session hover
+* Better restrict when toggle preview keybinding is enabled
+* Browser: create Playwright per agent session (link:https://github.com/microsoft/vscode/pull/313779[#313779])
+* Bump cachesalt
+* Bump openssl from 0.10.78 to 0.10.79 in /cli (link:https://github.com/microsoft/vscode/pull/314591[#314591])
+* Bump service version too
+* Bump version to 1.120.0 (link:https://github.com/microsoft/vscode/pull/314014[#314014])
+* Bust the cache (link:https://github.com/microsoft/vscode/pull/315575[#315575])
+* Cache Explorer: handle Responses API continuations and tool definitions (link:https://github.com/microsoft/vscode/pull/314654[#314654])
+* change defaults for sessions window
+* Changes to include workspaceStorage directory for allowRead (link:https://github.com/microsoft/vscode/pull/313820[#313820])
+* Changes to remove '.' from allowRead and allowWrite (link:https://github.com/microsoft/vscode/pull/314230[#314230])
+* Chat terminal: detect sensitive prompts and surface focus-terminal UI (link:https://github.com/microsoft/vscode/pull/314826[#314826])
+* chat: add copy microinteraction to code blocks (link:https://github.com/microsoft/vscode/pull/314750[#314750])
+* chat: avoid Open Agents Window keybinding conflict in screen reader mode (link:https://github.com/microsoft/vscode/pull/315342[#315342])
+* chat: Discover plugins installed by Copilot CLI (link:https://github.com/microsoft/vscode/pull/314805[#314805])
+* chat: fix customizations list cut off when switching sections and in sidebar (link:https://github.com/microsoft/vscode/pull/314749[#314749])
+* chat: gate agent host input completions on trigger characters (link:https://github.com/microsoft/vscode/pull/315327[#315327])
+* chat: gate aiCustomization sync event subscriptions when itemProvider is present (link:https://github.com/microsoft/vscode/pull/314548[#314548])
+* chat: gate structured customization preview behind a setting (default off) (link:https://github.com/microsoft/vscode/pull/314416[#314416])
+* chat: hide plugin actions for synced customization items (link:https://github.com/microsoft/vscode/pull/315320[#315320])
+* chat: improve ChatApprovedAccountOrganizations restriction messaging (link:https://github.com/microsoft/vscode/pull/313324[#313324])
+* chat: remove 'Bridged' badge from MCP servers in AI Customizations UI (link:https://github.com/microsoft/vscode/pull/315319[#315319])
+* chat: remove redundant 'Enabled' badge from installed plugin items (link:https://github.com/microsoft/vscode/pull/315100[#315100])
+* chat: remove untitled session resource warning (link:https://github.com/microsoft/vscode/pull/314016[#314016])
+* chat: skip local sync items when itemProvider is present in ProviderCustomizationItemSource (link:https://github.com/microsoft/vscode/pull/314413[#314413])
+* chat: sync queued agent host messages (link:https://github.com/microsoft/vscode/pull/315130[#315130])
+* chat: use ILabelService for remote agent host names in permission UI (link:https://github.com/microsoft/vscode/pull/314822[#314822])
+* Cherry-pick from release 1.119: Add terminal sandbox write allow list (link:https://github.com/microsoft/vscode/pull/314435[#314435])
+* chore(deps): bump @xterm/* to beta.213 to pick up overview ruler dispose fix
+* chore: bump sanity test containers (link:https://github.com/microsoft/vscode/pull/314778[#314778])
+* chore: cleanup sub application from sanity test pipeline (link:https://github.com/microsoft/vscode/pull/315006[#315006])
+* chore: npm audit fix (link:https://github.com/microsoft/vscode/pull/314855[#314855])
+* chore: remove sub app deprecation components (link:https://github.com/microsoft/vscode/pull/315064[#315064])
+* chore: remove unused GitHub hooks configuration (link:https://github.com/microsoft/vscode/pull/314911[#314911])
+* chore: track running agents app via marker file (link:https://github.com/microsoft/vscode/pull/314730[#314730])
+* ci: retrigger
+* Claude agent — Phase 7: tool permission round-trip + interactive tools (link:https://github.com/microsoft/vscode/pull/315399[#315399])
+* Clean up agenthost icon handling (link:https://github.com/microsoft/vscode/pull/314423[#314423])
+* cli: move back to microsoft/dev-tunnels
+* Close mobile sidebar drawer when creating a new session (link:https://github.com/microsoft/vscode/pull/314572[#314572])
+* Compress tool output to reduce token usage (link:https://github.com/microsoft/vscode/pull/314525[#314525])
+* Connor4312/msrc/119 (link:https://github.com/microsoft/vscode/pull/38[#38])
+* Copilot CLI with Agent Host should respect user shell from terminal profile when running shell commands (link:https://github.com/microsoft/vscode/pull/313679[#313679])
+* Deletes unneeded screenshot-test.yml
+* Derive worktree branch name from first message on agent host (link:https://github.com/microsoft/vscode/pull/315065[#315065])
+* Detect dead connections via keepalive timeout
+* Detect xterm-trimmed `Password:` prompt so agent doesn't hang on `sudo su` (link:https://github.com/microsoft/vscode/pull/314257[#314257])
+* Disable builtin extensions contributing unsupported features in sessions window
+* Disable doubleClickToSwitchToEditor and markEditorSelection by default
+* Disable flaky hover test (link:https://github.com/microsoft/vscode/pull/314129[#314129])
+* Disable issue reporter submit button while the issue is being submitted
+* Disable the local harness by default (link:https://github.com/microsoft/vscode/pull/315705[#315705])
+* Disable unified quick access when AI features are disabled
+* Disables css animations in fixtures
+* Do no fail component explorer check if fixture had errors
+* do not show open workspace action in sssions window (link:https://github.com/microsoft/vscode/pull/315081[#315081])
+* Do not trigger full product builds when merging PRs to a release branch
+* docs: capture DI-over-global-stub testing learning in copilot-instructions
+* dom test: swallow expected onUnexpectedError in throwing-callback test
+* dom: attribute ResizeObserver loop warning to DisposableResizeObserver name
+* dom: batch DisposableResizeObserver via rAF + convert raw call sites
+* dom: revert DisposableResizeObserver to sync, add loop-warning attribution
+* dom: scope DisposableResizeObserver attribution to the same task via microtask
+* dom: scope DisposableResizeObserver attribution to the same task via setTimeout(0)
+* don't hide tool calls incorrectly (link:https://github.com/microsoft/vscode/pull/315554[#315554])
+* Don't route terminal secret prompts through vscode_askQuestions (link:https://github.com/microsoft/vscode/pull/314258[#314258])
+* Don't show extra save dialog when switching dirty editor to md preview
+* Don't skip quota bucket when hasQuota: false (link:https://github.com/microsoft/vscode/pull/314874[#314874])
+* Dynamically manage local harness registration based on configuration changes (link:https://github.com/microsoft/vscode/pull/315889[#315889])
+* Enable agents window in stable (link:https://github.com/microsoft/vscode/pull/315245[#315245])
+* Enable auto-approve for AH in vscode (link:https://github.com/microsoft/vscode/pull/315383[#315383])
+* Enable console.log to log to ILogService (link:https://github.com/microsoft/vscode/pull/313978[#313978])
+* enable extension in sessions window even though they would have been disabled
+* Enable gpg signing for git commit in terminal sandbox (link:https://github.com/microsoft/vscode/pull/314876[#314876])
+* Enable markdown image context menu in custom editors too
+* Enable preload script in browser sub-frames (link:https://github.com/microsoft/vscode/pull/315269[#315269])
+* enable shared settings
+* Enable window commands in Agents window (link:https://github.com/microsoft/vscode/pull/315258[#315258])
+* Enhance shimmer effect for in-progress session titles (link:https://github.com/microsoft/vscode/pull/314956[#314956])
+* Enhance transition effects for "Open in Agents" titlebar widget and improve accessibility for reduced motion settings
+* Enhance transition timings and delays for "Open in Agents" titlebar widget
+* Ensures that component fixtures dont leak disposables
+* Escapes model id in chatEditHunk event
+* extension support in sessions window, disable themes which will execute code
+* extensions: rename `supportSessionsWindow` setting to `supportAgentsWindow` (link:https://github.com/microsoft/vscode/pull/315265[#315265])
+* Fail CI if a component fixture throws & enable node_module caching
+* feat(actionList): enhance filtering to show labeled separators for better context
+* feat(agent-host): gate inbound filesystem RPCs with a permission service (link:https://github.com/microsoft/vscode/pull/314194[#314194])
+* feat(chatModelPicker): enhance model picker with inline vendor labels for group separationj
+* feat(sessions): mobile bottom-sheet picker for opened-chat input (link:https://github.com/microsoft/vscode/pull/314571[#314571])
+* fix
+* fix #314733 (link:https://github.com/microsoft/vscode/pull/314737[#314737])
+* fix #314734 (link:https://github.com/microsoft/vscode/pull/314744[#314744])
+* Fix 0/0 hover for ubb (link:https://github.com/microsoft/vscode/pull/314651[#314651])
+* Fix Agent Host branch diffs after base updates (link:https://github.com/microsoft/vscode/pull/315324[#315324])
+* Fix agent host config picker order: worktree first, branch second (link:https://github.com/microsoft/vscode/pull/314871[#314871])
+* Fix Agent Host tool call history replay (link:https://github.com/microsoft/vscode/pull/315491[#315491])
+* Fix Agents welcome theme import cleanup (link:https://github.com/microsoft/vscode/pull/314070[#314070])
+* fix build
+* Fix build break in chatInputNotificationService announce (link:https://github.com/microsoft/vscode/pull/315360[#315360])
+* Fix chat input notification styling in inline chat (link:https://github.com/microsoft/vscode/pull/315082[#315082])
+* Fix comment widget not always showing (link:https://github.com/microsoft/vscode/pull/315227[#315227])
+* Fix custom diff editor restore and custom name
+* Fix Customizations view a11y: Home button focus + tile aria labels (link:https://github.com/microsoft/vscode/pull/314535[#314535])
+* Fix display condition for active overage and re-add PRU strings (link:https://github.com/microsoft/vscode/pull/314859[#314859])
+* Fix display for free UBB (link:https://github.com/microsoft/vscode/pull/315139[#315139])
+* Fix disposable leaks and cancellation handling across editor, chat, and menu components
+* Fix for MSRC 108803 (link:https://github.com/microsoft/vscode/pull/40[#40])
+* Fix for using reopen-with on dirty untitled doc incorrectly dropping data
+* Fix gap between radio buttons in tabbed action list (link:https://github.com/microsoft/vscode/pull/314973[#314973])
+* Fix gitignore negation in child files not overriding parent/global rules (link:https://github.com/microsoft/vscode/pull/300613[#300613])
+* Fix icon to text alignment (link:https://github.com/microsoft/vscode/pull/314043[#314043])
+* Fix image preview root for `git:` files
+* Fix incorrect inspect property usage in scope detection (link:https://github.com/microsoft/vscode/pull/301472[#301472])
+* fix leaks
+* Fix NPE
+* fix opening agents window for first time (link:https://github.com/microsoft/vscode/pull/314728[#314728])
+* Fix overage condition and add trace logging (link:https://github.com/microsoft/vscode/pull/315562[#315562])
+* Fix remote agent host reconnect hang for SSH and tunnel paths (link:https://github.com/microsoft/vscode/pull/315552[#315552])
+* Fix run_in_terminal hang on `exit 42` at the source (link:https://github.com/microsoft/vscode/pull/314308[#314308])
+* Fix run_in_terminal hang when the command exits the shell (e.g. `exit 42`) (link:https://github.com/microsoft/vscode/pull/314280[#314280])
+* Fix setup localization files encoding (link:https://github.com/microsoft/vscode/pull/312073[#312073])
+* fix showing explicitely skipped terminal tools (link:https://github.com/microsoft/vscode/pull/315542[#315542])
+* Fix some bugs around preserving location when switching current tab to md preview
+* fix source display
+* Fix SSH to agent host (link:https://github.com/microsoft/vscode/pull/314407[#314407])
+* Fix stale BYOK models in model picker after API key removal (link:https://github.com/microsoft/vscode/pull/314577[#314577])
+* fix test
+* Fix that "Mark as Done" wouldn't work on local sessions until a window reload (link:https://github.com/microsoft/vscode/pull/315553[#315553])
+* Fix the node_modules cache (link:https://github.com/microsoft/vscode/pull/315585[#315585])
+* Fix UBB detection (link:https://github.com/microsoft/vscode/pull/314584[#314584])
+* fix(agentHost): await dbClose to resolve flaky session database tests (link:https://github.com/microsoft/vscode/pull/313810[#313810])
+* fix(debug): guard REPL tree.updateChildren against missing input
+* fix(extension-mgmt): observe waitForInstallation rejection on early-exit
+* fix(extension-mgmt): record concurrent install result so callers don't see "Unknown error"
+* fix: memory leak in utilityProcessWorkerMainService (link:https://github.com/microsoft/vscode/pull/294005[#294005])
+* fix: provide quotas mock for IChatEntitlementService in fixtures (link:https://github.com/microsoft/vscode/pull/315442[#315442])
+* fix: restore telemetry app name for agents window (link:https://github.com/microsoft/vscode/pull/315066[#315066])
+* fix: sessions terminal contribution should not manage hidden tool terminals (link:https://github.com/microsoft/vscode/pull/315556[#315556])
+* fix: simplify hide action in WorkspacePicker's buildDelegate method (link:https://github.com/microsoft/vscode/pull/314646[#314646])
+* fix: skip stale category-progress DOM elements during walkthrough unregistration (fixes #315290)
+* fix: use onUnexpectedExternalError for delegate errors in RemoteAuthorities.rewrite (fixes #314124)
+* fixes
+* fixes
+* Fixes
+* Fixes ci
+* Fixes component explorer ci (link:https://github.com/microsoft/vscode/pull/314256[#314256])
+* fixes component explorer lock file
+* Fixes component fixture errors (link:https://github.com/microsoft/vscode/pull/314164[#314164])
+* fixes diff reporter
+* fixes for agents window (link:https://github.com/microsoft/vscode/pull/314394[#314394])
+* fixes https://github.com/microsoft/vscode/issues/291188 (link:https://github.com/microsoft/vscode/pull/314713[#314713])
+* fixes https://github.com/microsoft/vscode/issues/309891
+* fixes https://github.com/microsoft/vscode/issues/313042
+* Fixes screenshot diff report
+* Fixes tests
+* Force-close lingering connections in request test teardown
+* Force-kill Electron app if close hangs in sanity tests (link:https://github.com/microsoft/vscode/pull/315418[#315418])
+* Forward chat margin wheel events (link:https://github.com/microsoft/vscode/pull/315589[#315589])
+* guarantee that return of TreeDataProvider.getChildren() is not mutated by vscode (link:https://github.com/microsoft/vscode/pull/306955[#306955])
+* Guard `ChatTipService` against disposed scoped context key service (link:https://github.com/microsoft/vscode/pull/314757[#314757])
+* Guard terminal resize/dispose race against xterm.js dimension getters
+* Handle inputNeeded in execution subagent to prevent looping (link:https://github.com/microsoft/vscode/pull/314141[#314141])
+* Harden snippet session against null decorations and selection/placeholder cardinality drift (link:https://github.com/microsoft/vscode/pull/315206[#315206])
+* Have a better title for the Agents window (link:https://github.com/microsoft/vscode/pull/315549[#315549])
+* Hide Agent Sessions banner when disableAIFeatures is true
+* Implements trace logging
+* Improve git lfs media diffs
+* Improve sessions list rendering on phone layout (link:https://github.com/microsoft/vscode/pull/314321[#314321])
+* Improve transition timings and delays for titlebar widget animations
+* Improved git state computation for local sessions (link:https://github.com/microsoft/vscode/pull/315707[#315707])
+* Improves animated value (link:https://github.com/microsoft/vscode/pull/315213[#315213])
+* Improves screenshot experience for forks
+* in autopiltot and bypass we should never show global auto dialogue (link:https://github.com/microsoft/vscode/pull/314920[#314920])
+* Include All-Interfaces links (0.0.0.0, [::], [0:0:0:0:0:0:0:0]) in integrated browser localhost targets (link:https://github.com/microsoft/vscode/pull/314480[#314480])
+* Include user-agent modified styles in attached element context (link:https://github.com/microsoft/vscode/pull/314438[#314438])
+* Include userSelectedTools when sending first local session chat
+* Initial implementation (link:https://github.com/microsoft/vscode/pull/314957[#314957])
+* Integrated terminal - fix stale OSC 8 link hover tooltip issues (link:https://github.com/microsoft/vscode/pull/309539[#309539])
+* Introduce proposed `agentsWindow` configuration extension point (link:https://github.com/microsoft/vscode/pull/314575[#314575])
+* issue: indicate agents window in issue reporter body (link:https://github.com/microsoft/vscode/pull/315261[#315261])
+* Layout modal editor with position & during drag updates (link:https://github.com/microsoft/vscode/pull/314555[#314555])
+* Limit error message header to first line
+* local session type for agents window
+* Log local agent host AHP traffic (link:https://github.com/microsoft/vscode/pull/315490[#315490])
+* Make local agent enablement ExP configurable
+* make sure to clear plan mode widget if canceled (link:https://github.com/microsoft/vscode/pull/314221[#314221])
+* Makes random deterministic in fixtures
+* mcp: use chatStreamToolCallId for tool invocation permalinks (link:https://github.com/microsoft/vscode/pull/314870[#314870])
+* Mobile agents: home screen improvements (link:https://github.com/microsoft/vscode/pull/314226[#314226])
+* Model picker styling updates (link:https://github.com/microsoft/vscode/pull/314150[#314150])
+* Monthly limit -> Credits (link:https://github.com/microsoft/vscode/pull/315072[#315072])
+* More review feedback
+* Move details to hover (link:https://github.com/microsoft/vscode/pull/315215[#315215])
+* Move risk assessment above buttons (link:https://github.com/microsoft/vscode/pull/315215[#315215])
+* move zen mode in its own file
+* Naming
+* Only reports screenshot changes that pass a threshold
+* Only show Focus Terminal button on question carousel when terminal is awaiting input (link:https://github.com/microsoft/vscode/pull/314523[#314523])
+* Only unmaximize auxiliary side bar when editor visibility changes due to an explicit user action
+* Open Workspace In Agents Window: select folder in new chat view (link:https://github.com/microsoft/vscode/pull/314602[#314602])
+* OSS tool: update third-party notices (v1.120) (link:https://github.com/microsoft/vscode/pull/315916[#315916])
+* Pass session capabilities to chat parser (link:https://github.com/microsoft/vscode/pull/314027[#314027])
+* Persist workingDirectory across reload for local sessions
+* Pick up latest md language server
+* Pick up latest TS native preview for building VS Code
+* picker telemetry
+* pinned browser action for sessions tasks
+* plan review widget setting + better indication to exit feedback mode (link:https://github.com/microsoft/vscode/pull/315579[#315579])
+* plugins: support installing single-plugin source repos (link:https://github.com/microsoft/vscode/pull/314263[#314263])
+* Potential fix for pull request finding
+* Potential fix for pull request finding
+* Potential fix for pull request finding
+* Potential fix for pull request finding
+* Potential fix for pull request finding
+* Potential fix for pull request finding
+* PR feedback
+* Put ambiguous options into interface (link:https://github.com/microsoft/vscode/pull/313953[#313953])
+* Pzhu/feature custom snooze time (link:https://github.com/microsoft/vscode/pull/298934[#298934])
+* Reasoning effort and context picker updates (link:https://github.com/microsoft/vscode/pull/314823[#314823])
+* Reduce token usage of "add element to chat" (link:https://github.com/microsoft/vscode/pull/314201[#314201])
+* Reduces screenshot report size
+* Refactor browser element selection to be event-based (link:https://github.com/microsoft/vscode/pull/315362[#315362])
+* Refactor customization toolbar and sidebar button styles (link:https://github.com/microsoft/vscode/pull/314994[#314994])
+* refactor: encapsulate working directory logic in WorkingDirectory class
+* refactor: remove sub application support (link:https://github.com/microsoft/vscode/pull/314409[#314409])
+* Refine action list style and add detailItemHeight option (link:https://github.com/microsoft/vscode/pull/314980[#314980])
+* Register IAgentHostPermissionService in workbench.common.main (link:https://github.com/microsoft/vscode/pull/314526[#314526])
+* Remember previously selected session type and isolation mode (link:https://github.com/microsoft/vscode/pull/314609[#314609])
+* remove `activating cortana` as a possible working message (link:https://github.com/microsoft/vscode/pull/315557[#315557])
+* Remove Agents app testing from sanity tests (link:https://github.com/microsoft/vscode/pull/315180[#315180])
+* Remove 'Del' button from session history window (link:https://github.com/microsoft/vscode/pull/314422[#314422])
+* Remove gap from sidebar action list and adjust padding in customizations toolbar (link:https://github.com/microsoft/vscode/pull/315016[#315016])
+* remove gradient background as it doesn't work on windows/linux
+* Remove model picker visibility overrides
+* remove problems view (link:https://github.com/microsoft/vscode/pull/314687[#314687])
+* Remove quota exceeded chat titlebar button (link:https://github.com/microsoft/vscode/pull/315143[#315143])
+* Remove redundant try/catch around xterm dimensions read
+* remove template
+* remove testing from sessions window
+* Remove transition effects for reduced motion settings in "Open in Agents" titlebar widget
+* remove unknown
+* Remove unused export const (link:https://github.com/microsoft/vscode/pull/315244[#315244])
+* Rename Collect Agent Host Debug Logs action to Export, download remote agenthost.log (link:https://github.com/microsoft/vscode/pull/314884[#314884])
+* rename to tasks ser ice and fix joinPath error
+* Renames component fixture ci workflow to "component-fixtures.yml" / Component Fixture Screenshots & Tests (link:https://github.com/microsoft/vscode/pull/315218[#315218])
+* Render apply_patch as file edits (link:https://github.com/microsoft/vscode/pull/315475[#315475])
+* Replace "Agents app" with "Agents window" in user-facing strings (link:https://github.com/microsoft/vscode/pull/315302[#315302])
+* Retry browser-test page.goto on connection-refused (link:https://github.com/microsoft/vscode/pull/315504[#315504])
+* Reuse VS Code's update widget/tooltip in the Agents app (link:https://github.com/microsoft/vscode/pull/313450[#313450])
+* Revert "agentHost/claude: Phase 6 — sendMessage, single-turn, no tools (#314216)"
+* review and cleanup IAgentAttachment
+* Run copilot extension lint in PR CI (link:https://github.com/microsoft/vscode/pull/315368[#315368])
+* salty
+* Scope model picker changes to UBB only (link:https://github.com/microsoft/vscode/pull/315372[#315372])
+* sessions editor group actions
+* sessions: add `sessions.customizations.sidebarMode` enum setting (link:https://github.com/microsoft/vscode/pull/314862[#314862])
+* sessions: add back/forward session navigation (link:https://github.com/microsoft/vscode/pull/315382[#315382])
+* sessions: add command to collect agent host debug logs as zip (link:https://github.com/microsoft/vscode/pull/314626[#314626])
+* sessions: add command to open events.jsonl for active Copilot CLI AH session (link:https://github.com/microsoft/vscode/pull/314596[#314596])
+* sessions: add search actions to Files view (link:https://github.com/microsoft/vscode/pull/314697[#314697])
+* sessions: address Copilot review feedback on session restore (link:https://github.com/microsoft/vscode/pull/315354[#315354])
+* sessions: Agents window UI polish and chat setup API (link:https://github.com/microsoft/vscode/pull/315027[#315027])
+* sessions: align sub-session tip content (link:https://github.com/microsoft/vscode/pull/314885[#314885])
+* sessions: defer agent host unread tracking to view layer (link:https://github.com/microsoft/vscode/pull/315582[#315582])
+* sessions: enable Search Editor and Problems panel in Agents window (link:https://github.com/microsoft/vscode/pull/314599[#314599])
+* sessions: fix Customizations single-entry width overflow (link:https://github.com/microsoft/vscode/pull/315125[#315125])
+* sessions: fix duplicate session in list when new session is opened while another is active (link:https://github.com/microsoft/vscode/pull/314913[#314913])
+* sessions: folder grouping criteria and show more/less workspaces in sessions list (link:https://github.com/microsoft/vscode/pull/315007[#315007])
+* sessions: hide titlebar in new chat view (link:https://github.com/microsoft/vscode/pull/314890[#314890])
+* sessions: make navigation history size observable (link:https://github.com/microsoft/vscode/pull/315391[#315391])
+* sessions: mark background sessions as unread when turn completes (link:https://github.com/microsoft/vscode/pull/315263[#315263])
+* sessions: match panel tabs to auxiliary bar (link:https://github.com/microsoft/vscode/pull/314843[#314843])
+* sessions: move harness picker into new chat header (link:https://github.com/microsoft/vscode/pull/315089[#315089])
+* sessions: refactor welcome flow into SessionsWelcomeService (link:https://github.com/microsoft/vscode/pull/315069[#315069])
+* sessions: refine shell gradient placement (link:https://github.com/microsoft/vscode/pull/314881[#314881])
+* sessions: remove Home button from customizations view header (link:https://github.com/microsoft/vscode/pull/314291[#314291])
+* sessions: remove theme step from welcome flow and update title (link:https://github.com/microsoft/vscode/pull/314551[#314551])
+* sessions: restore last active session on reload (link:https://github.com/microsoft/vscode/pull/315312[#315312])
+* sessions: retain attached editor maximize state (link:https://github.com/microsoft/vscode/pull/314841[#314841])
+* sessions: round chat send button (link:https://github.com/microsoft/vscode/pull/315330[#315330])
+* sessions: show Rename action for local agent host sessions (link:https://github.com/microsoft/vscode/pull/314279[#314279])
+* sessions: skip slash command expansion in agent host sessions (link:https://github.com/microsoft/vscode/pull/314015[#314015])
+* sessions: Stop expanding skill/prompt slash commands (link:https://github.com/microsoft/vscode/pull/314289[#314289])
+* sessions: sync customizations harness with AHP session resource scheme (link:https://github.com/microsoft/vscode/pull/315127[#315127])
+* sessions: update context-menu actions to exclude Claude session type from delete action (link:https://github.com/microsoft/vscode/pull/315162[#315162])
+* sessions: use agent-specific codicons for session type icons (link:https://github.com/microsoft/vscode/pull/314283[#314283])
+* sessions: use codicon spinner in new chat input (link:https://github.com/microsoft/vscode/pull/315332[#315332])
+* sessions: use hover service for New Session button tooltip (link:https://github.com/microsoft/vscode/pull/315106[#315106])
+* Show Agent Host session branch in title (link:https://github.com/microsoft/vscode/pull/315413[#315413])
+* show keybinding for search (link:https://github.com/microsoft/vscode/pull/314709[#314709])
+* Show relative pricing in model picker (link:https://github.com/microsoft/vscode/pull/314541[#314541])
+* Silence orphaned unhandledRejections from extension management
+* Simplify sign-in state for chat status dashboard (link:https://github.com/microsoft/vscode/pull/314611[#314611])
+* Skip passing folder URI to agents window for non-file schemes (link:https://github.com/microsoft/vscode/pull/314607[#314607])
+* Skip redundant steering message when kill_terminal disposes terminal (link:https://github.com/microsoft/vscode/pull/314130[#314130])
+* Small css fix (link:https://github.com/microsoft/vscode/pull/314318[#314318])
+* Snippets: fix comma in serialized regex transform (link:https://github.com/microsoft/vscode/pull/315151[#315151])
+* Special profile for Agents Window (link:https://github.com/microsoft/vscode/pull/314240[#314240])
+* ssh agent host: accept `localhost` in startup banner regex (link:https://github.com/microsoft/vscode/pull/314640[#314640])
+* Stop chat input notification from announcing repeatedly to screen readers (link:https://github.com/microsoft/vscode/pull/313787[#313787])
+* Strip codicons from terminal quickpick filter matching (link:https://github.com/microsoft/vscode/pull/313197[#313197])
+* Strip Markdown when announcing chat input notification to screen readers (link:https://github.com/microsoft/vscode/pull/315367[#315367])
+* Strip NODE_OPTIONS in removeDangerousEnvVariables (link:https://github.com/microsoft/vscode/pull/314847[#314847])
+* sudo :-) (link:https://github.com/microsoft/vscode/pull/315439[#315439])
+* Support workspace settings in Agents window (link:https://github.com/microsoft/vscode/pull/315009[#315009])
+* Suppress redundant input-needed steering after foreground inputNeeded race (link:https://github.com/microsoft/vscode/pull/314229[#314229])
+* Switch back to using parcel's watcher for esbuild
+* SyncedCustomizationBundler: filter by sessionType (link:https://github.com/microsoft/vscode/pull/314688[#314688])
+* Tag SocketTimeoutEvent with reason, make unack field optional
+* telemetry: add compressOutputEnabled to toolUse.runInTerminal (link:https://github.com/microsoft/vscode/pull/315328[#315328])
+* terminal: fix Linux sandbox wrapper env assignment (link:https://github.com/microsoft/vscode/pull/315828[#315828])
+* Terminate COM surrogate process before update/gc (link:https://github.com/microsoft/vscode/pull/313791[#313791])
+* test
+* test: add DisposableResizeObserver batching/dispose tests
+* test: inject ResizeObserver ctor instead of mutating mainWindow
+* themes: fix match highlight contrast in focused quick pick rows (2026 themes) (link:https://github.com/microsoft/vscode/pull/314117[#314117])
+* Thread session workingDirectory through tools, prompts, and confirmations
+* try
+* Turn on by default for testing
+* Tweak markdown `reopen` command wording and icon
+* Update Agents welcome banner wording (1.120) (link:https://github.com/microsoft/vscode/pull/316066[#316066])
+* Update chat inline references after late anchor resolution (link:https://github.com/microsoft/vscode/pull/314281[#314281])
+* update distro (link:https://github.com/microsoft/vscode/pull/315555[#315555])
+* Update distro commit (main) (link:https://github.com/microsoft/vscode/pull/314301[#314301])
+* Update distro commit (main) (link:https://github.com/microsoft/vscode/pull/315070[#315070])
+* Update distro commit (release/1.120) (link:https://github.com/microsoft/vscode/pull/315917[#315917])
+* Update distro commit (release/1.120) (link:https://github.com/microsoft/vscode/pull/315989[#315989])
+* Update endgame notebook milestones to 1.120.0 (link:https://github.com/microsoft/vscode/pull/314013[#314013])
+* Update Fig spec for Azure Developer CLI (azd) (link:https://github.com/microsoft/vscode/pull/308613[#308613])
+* Update InlineChatZoneWidget screenshot baselines
+* Update language models management description
+* Update look of model hover (link:https://github.com/microsoft/vscode/pull/314820[#314820])
+* update naming
+* Update remote dependencies (link:https://github.com/microsoft/vscode/pull/313923[#313923])
+* Update repository and path for Razor repo (link:https://github.com/microsoft/vscode/pull/313011[#313011])
+* update unit test
+* Update wording and fix view usage button (link:https://github.com/microsoft/vscode/pull/315179[#315179])
+* updates component explorer
+* updates component explorer
+* updates component explorer
+* Updates to chat pickers (link:https://github.com/microsoft/vscode/pull/315076[#315076])
+* Use a broadcast channel for md preview diff scroll sync
+* use inline editor for plan widget (link:https://github.com/microsoft/vscode/pull/314332[#314332])
+* use review plan tool in claude agent (link:https://github.com/microsoft/vscode/pull/313835[#313835])
+* Use SVG icon instead of codicon in Open in Agents titlebar widget (link:https://github.com/microsoft/vscode/pull/315286[#315286])
+* Uses full dark modern theme for component fixtures & implements improved time travel scheduler
+* Various improvements and fixes for markdown diff rendering
+// end::core-entries[]
