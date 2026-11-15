@@ -1,5 +1,5 @@
 **/build/*/**/*.js
-**/dist/**/*.js
+**/dist/**/*
 **/extensions/**/*.d.ts
 **/extensions/**/build/**
 **/extensions/**/colorize-fixtures/**
@@ -35,4 +35,5 @@
 **/test/automation/out/**
 **/typings/**
 **/.build/**
+**/.vscode-test/**
 !.vscode

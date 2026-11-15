@@ -4,11 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 // @ts-check
 import fs from 'fs';
+import { builtinModules } from 'module';
 import path from 'path';
 import tseslint from 'typescript-eslint';
 
 import stylisticTs from '@stylistic/eslint-plugin-ts';
 import * as pluginLocal from './.eslint-plugin-local/index.ts';
+import pluginImport from 'eslint-plugin-import';
 import pluginJsdoc from 'eslint-plugin-jsdoc';
 
 import pluginHeader from 'eslint-plugin-header';
@@ -193,6 +195,7 @@ export default tseslint.config(
 			'src/bootstrap-node.ts',
 			'build/lib/extensions.ts',
 			'build/lib/test/render.test.ts',
+			'extensions/copilot/**/*',
 			'extensions/debug-auto-launch/src/extension.ts',
 			'extensions/emmet/src/updateImageSize.ts',
 			'extensions/emmet/src/util.ts',
@@ -1063,7 +1066,7 @@ export default tseslint.config(
 			'local/code-no-static-node-module-import': [
 				'error',
 				// Files that run in separate processes, not on the electron-main startup path
-				'src/vs/platform/agentHost/node/copilot/**/*.ts',
+				'src/vs/platform/agentHost/node/**/*.ts',
 				'src/vs/platform/files/node/watcher/**/*.ts',
 				'src/vs/platform/terminal/node/**/*.ts',
 				// Files that use small, safe modules
@@ -1528,7 +1531,6 @@ export default tseslint.config(
 						'undici-types',
 						'url',
 						'util',
-						'v8-inspect-profiler',
 						'vscode-regexpp',
 						'vscode-textmate',
 						'worker_threads',
@@ -1544,7 +1546,8 @@ export default tseslint.config(
 						'@xterm/xterm',
 						'yauzl',
 						'yazl',
-						'zlib'
+						'zlib',
+						'chrome-remote-interface'
 					]
 				},
 				{
@@ -1614,6 +1617,21 @@ export default tseslint.config(
 						'vs/base/parts/*/~',
 						'vs/platform/*/~',
 						'vs/editor/common/diff/**', // diffing logic used by the agent host
+					]
+				},
+				{
+					'target': 'src/vs/platform/agentHost/~',
+					'restrictions': [
+						'vs/base/~',
+						'vs/base/parts/*/~',
+						'vs/platform/*/~',
+						'tas-client', // node module allowed even in /common/
+						'@microsoft/1ds-core-js', // node module allowed even in /common/
+						'@microsoft/1ds-post-js', // node module allowed even in /common/
+						'@xterm/headless', // node module allowed even in /common/
+						'@vscode/tree-sitter-wasm', // used by agentHost for command auto-approval
+						'@vscode/copilot-api', // used by agentHost for Copilot API requests
+						'@anthropic-ai/sdk' // used by agentHost for Anthropic API requests
 					]
 				},
 				{
@@ -2298,16 +2316,16 @@ export default tseslint.config(
 			'comma-dangle': ['warn', 'only-multiline']
 		}
 	},
-	// Extension main sources (excluding tests)
+	// Ban dynamic require() and import() calls in extensions to ensure tree-shaking works
 	{
 		files: [
-			'extensions/**/*.ts',
+			'extensions/**/*.{ts,tsx}',
 		],
 		ignores: [
 			'extensions/**/*.test.ts',
+			'extensions/copilot/**/*',
 		],
 		rules: {
-			// Ban dynamic require() and import() calls in extensions to ensure tree-shaking works
 			'no-restricted-syntax': [
 				'warn',
 				{

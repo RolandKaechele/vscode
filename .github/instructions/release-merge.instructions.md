@@ -44,3 +44,13 @@ CLI/agent extension and its build/CI integration). When merging an upstream
   `false` whenever they appear, even if an upstream release branch changes
   their default to `true`. If a merge introduces or flips these defaults,
   revert just the default value (not unrelated code in the same file).
+- `eslint.config.js` imports `./extensions/copilot/.eslintplugin/index.ts` and
+  has large copilot-only override blocks (search for `// copilot extension -`).
+  It often merges cleanly with no conflict markers even after the extension is
+  deleted, silently reintroducing the broken import — this only surfaces when
+  the hygiene pre-commit hook runs ESLint (`ERR_MODULE_NOT_FOUND` on
+  `.eslintplugin/index.ts`), not during `npm run compile`. After every merge,
+  grep `eslint.config.js` for `pluginCopilotLocal|copilot-local|.eslintplugin`
+  and `// copilot extension -` and remove the import line plus all matching
+  override blocks. Leftover `extensions/copilot/**` glob entries used only as
+  harmless ignore patterns elsewhere can stay.
