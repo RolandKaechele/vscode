@@ -54,3 +54,14 @@ CLI/agent extension and its build/CI integration). When merging an upstream
   and `// copilot extension -` and remove the import line plus all matching
   override blocks. Leftover `extensions/copilot/**` glob entries used only as
   harmless ignore patterns elsewhere can stay.
+- Do not use PowerShell (`Set-Content`, `Out-File`, `[System.IO.File]::WriteAllText`,
+  etc.) to bulk-edit or regenerate tracked files during a merge — `Set-Content`/
+  `Out-File` default to UTF-8-with-BOM on Windows and silently prepend a BOM,
+  which fails the hygiene check (`Unexpected unicode character: "ï»¿"`) on the
+  next commit; multi-line PowerShell blocks have also repeatedly left the
+  terminal stuck or produced corrupted/mangled output (see
+  `terminal-tool-quirks` memory). Use `replace_string_in_file`/
+  `multi_replace_string_in_file` for conflict resolution and file edits
+  instead, even for large repetitive removals (e.g. stripping a whole
+  copilot-only config block) — only use a terminal for read-only git/grep
+  inspection commands during a merge.
