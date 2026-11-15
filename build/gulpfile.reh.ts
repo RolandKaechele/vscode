@@ -463,7 +463,7 @@ function patchWin32DependenciesTask(destinationFolderName: string) {
 	};
 }
 
-function copyCopilotNativeDepsTaskREH(platform: string, arch: string, destinationFolderName: string) {
+function prepareCopilotRipgrepShimTaskREH(platform: string, arch: string, destinationFolderName: string) {
 	return async () => {
 		const outputDir = path.join(BUILD_ROOT, destinationFolderName);
 		const nodeModulesDir = path.join(outputDir, 'node_modules');
@@ -520,7 +520,7 @@ function tweakProductForServerWeb(product: typeof import('../product.json')) {
 				gulp.task(`node-${platform}-${arch}`) as task.Task,
 				util.rimraf(path.join(BUILD_ROOT, destinationFolderName)),
 				packageTask(type, platform, arch, sourceFolderName, destinationFolderName),
-				copyCopilotNativeDepsTaskREH(platform, arch, destinationFolderName)
+				prepareCopilotRipgrepShimTaskREH(platform, arch, destinationFolderName)
 			];
 
 			if (platform === 'win32') {

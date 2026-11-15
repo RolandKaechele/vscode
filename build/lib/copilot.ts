@@ -46,8 +46,9 @@ function toNodePlatformArch(platform: string, arch: string): { nodePlatform: str
  * for architectures other than the build target.
  *
  * For platforms the copilot SDK doesn't natively support (e.g. alpine, armhf),
- * ALL platform packages are stripped - that's fine because the SDK doesn't ship
- * binaries for those platforms anyway, and we replace them with VS Code's own.
+ * ALL platform packages are stripped - that's fine because the copilot CLI SDK
+ * resolves `node-pty` from the embedder (VS Code) first via `hostRequire`,
+ * falling back to its bundled copy only if the embedder can't provide it.
  */
 export function getCopilotExcludeFilter(platform: string, arch: string): string[] {
 	const { nodePlatform, nodeArch } = toNodePlatformArch(platform, arch);
@@ -55,8 +56,8 @@ export function getCopilotExcludeFilter(platform: string, arch: string): string[
 	const nonTargetPlatforms = copilotPlatforms.filter(p => p !== targetPlatformArch);
 
 	// Strip wrong-architecture @github/copilot-{platform} packages.
-	// All copilot prebuilds are stripped by .moduleignore; VS Code's own
-	// node-pty is copied into the prebuilds location by a post-packaging task.
+	// All copilot prebuilds are stripped by .moduleignore; the copilot CLI SDK
+	// resolves `node-pty` from VS Code's own node_modules via `hostRequire`.
 	const excludes = nonTargetPlatforms.map(p => `!**/node_modules/@github/copilot-${p}/**`);
 
 	return ['**', ...excludes];
