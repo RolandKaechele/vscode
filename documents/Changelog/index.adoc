@@ -1,0 +1,18 @@
+= VS Code Changelog
+:toc:
+:toclevels: 1
+
+Release-by-release changelogs for this fork, tracking bug fixes and
+enhancements merged in from the upstream https://github.com/microsoft/vscode[microsoft/vscode]
+release branches. Each release provides two variants:
+
+* *fork* — only the changes actually applied to this fork (excludes
+  `extensions/copilot`, which this fork does not ship).
+* *full upstream* — the complete upstream change set, including the
+  `extensions/copilot`-scoped changes that were intentionally left out.
+
+== 1.117
+
+include::chapters/v1.117-changelog-without-copilot-extension.adoc[leveloffset=+2]
+
+include::chapters/v1.117-changelog-with-copilot-extension.adoc[leveloffset=+2]

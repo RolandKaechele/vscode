@@ -49,3 +49,18 @@ npm run gulp vscode-win32-x64
 yarn gulp vscode-win32-x64-inno-updater
 yarn gulp vscode-win32-x64-system-setup
 ```
+
+## `npm run compile` completion is unreliable to detect automatically
+
+`npm run compile` (the full gulp `compile` task, as opposed to the watch
+tasks) can take several minutes and its terminal output/exit signal is not
+reliably observed by the agent — the tool call can report completion (or
+time out and move to background) without the real `Finished 'compile' after
+...` line actually having been reached yet, and polling `get_terminal_output`
+on it is unreliable for the same reason the watch-task output is (see
+`terminal-tool-quirks` memory). Do not assume the compile finished just
+because a tool call returned or because a few lines of expected output are
+present. After running `npm run compile`, ask the user to confirm the command
+has actually finished (e.g. by pasting the final `Finished 'compile' after
+...` line) before relying on its result or proceeding with dependent steps.
+

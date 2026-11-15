@@ -202,7 +202,7 @@
 		"sash"
 	],
 	// --- Workbench ---
-	"editor.aiStats.enabled": true, // Team selfhosting on ai stats
+	"editor.aiStats.enabled": false, // Team selfhosting on ai stats
 	"azureMcp.enabledServices": [
 		"kusto" // Needed for kusto tool in data.prompt.md
 	],

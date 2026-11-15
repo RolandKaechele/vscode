@@ -37,3 +37,10 @@ CLI/agent extension and its build/CI integration). When merging an upstream
 - Also run `npm run compile` once, since the merge can touch `build/gulpfile*.ts`
   and `build/lib/**` directly — `compile-check-ts-native` only type-checks
   `src/`, it won't catch build-script breakage from the exclusion cleanup.
+- This fork does not adopt "vibe coding" defaults: the settings
+  `chat.defaultToCopilotHarness` and `chat.editor.preferCopilotHarness` (or
+  any equivalently-named setting that defaults chat to an external Copilot
+  harness instead of the built-in experience) must keep a default value of
+  `false` whenever they appear, even if an upstream release branch changes
+  their default to `true`. If a merge introduces or flips these defaults,
+  revert just the default value (not unrelated code in the same file).
