@@ -57,6 +57,14 @@ build (`out-vscode-min`) matching what's actually shipped to users; it's
 smaller but harder to debug. Same substitution applies to the other
 platform/arch targets (e.g. `vscode-darwin-arm64`, `vscode-linux-x64`).
 
+| | `vscode-win32-x64` | `vscode-win32-x64-min` |
+|---|---|---|
+| Source folder | `out-vscode` | `out-vscode-min` |
+| Compile step | `compileBuildWithoutManglingTask` | `compileBuildWithManglingTask` (private-field mangling) |
+| Bundle step | `bundleVSCodeTask` (bundled, not minified) | `minifyVSCodeTask` (bundled **and** minified) |
+| Output size | Larger | Smaller |
+| Readability | Source structure/names mostly intact — easier to debug, better stack traces | Minified/mangled — matches what Microsoft actually ships |
+
 ## `npm run compile` completion is unreliable to detect automatically
 
 `npm run compile` (the full gulp `compile` task, as opposed to the watch
