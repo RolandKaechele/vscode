@@ -135,7 +135,7 @@ function f(x: number, y: string): void { }
 - Use `describe` and `test` consistently with existing patterns
 - Prefer regex capture groups with names over numbered capture groups.
 - If you create any temporary new files, scripts, or helper files for iteration, clean up these files by removing them at the end of the task
-- Create ad-hoc/throwaway scripts (PowerShell, Python, etc. used to inspect or transform things mid-task) in the OS temp directory, not in the repo working tree — avoids stray untracked files and the need to remember to delete them. If a script turns out to be generically reusable, add it under a `tools/` folder in the repo instead of leaving it temporary.
+- Create ad-hoc/throwaway scripts (PowerShell, Python, etc. used to inspect or transform things mid-task) in the workspace's gitignored `.tmp/` folder, not in the OS-level temp directory (e.g. `$env:TEMP`/`C:\Users\<user>\AppData\Local\Temp`) and not in the repo working tree proper — files outside the workspace folder require an extra manual-apply step from the user, and `.tmp/` is already excluded via `.gitignore` so nothing needs manual cleanup from git's perspective. If a script turns out to be generically reusable, add it under a `tools/` folder in the repo instead of leaving it temporary.
 - Never duplicate imports. Always reuse existing imports if they are present.
 - When removing an import, do not leave behind blank lines where the import was. Ensure the surrounding code remains compact.
 - Do not use `any` or `unknown` as the type for variables, parameters, or return values unless absolutely necessary. If they need type annotations, they should have proper types or interfaces defined.
